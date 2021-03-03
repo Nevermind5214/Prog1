@@ -92,21 +92,24 @@ try
 
 	//ii.move(100,200);
 
+	Ellipse e {Point{100,200}, 75,25};
+	e.set_color(Color::dark_red);
+	win.attach(e);
 
-	//Circle c {Point{100,200},50};
-	//win.attach(c);
+	Circle c {Point{100,200},50};
+	win.attach(c);
 
-	//Mark m {Point(100,200),'x'};
-	//win.attach(m);
+	Mark m {Point(100,200),'x'};
+	win.attach(m);
 
-	//ostringstream oss;
-	//oss << "screen size: " << x_max() << "*" << y_max() << "; window size: " << win.x_max() << "*" << win.y_max();
-	//Text sizes {Point{100,20},oss.str()};
-	//Image cal {Point{225,225},"snow_cpp.gif"};
-	//cal.set_mask(Point{40,40},200,150);
+	ostringstream oss;
+	oss << "screen size: " << x_max() << "*" << y_max() << "; window size: " << win.x_max() << "*" << win.y_max();
+	Text sizes {Point{100,20},oss.str()};
+	Image cal {Point{225,225},"snow_cpp.gif"};
+	cal.set_mask(Point{40,40},200,150);
 
-	//win.attach(sizes);
-	//win.attach(cal);
+	win.attach(sizes);
+	win.attach(cal);
 
 
 	win.wait_for_button(); // give control to the display engine
