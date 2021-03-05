@@ -4,11 +4,11 @@ g++ Ch12Drill.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -o Ch12Drill `f
 
 #include "Simple_window.h" // get access to our window library
 #include "Graph.h" // get access to our graphics library facilities
-#include "std_lib_facilities.h"
+#include "std_lib_facilities.h" // good ol' library
 
-double one(double) { return 1; }
+double one(double) { return 1; } // Mindíg 1-et ad vissza
 
-double square(double x) { return x*x; }
+double square(double x) { return x*x; } // négyzetezi
 
 int main()
 try
@@ -17,12 +17,12 @@ try
 	using namespace Graph_lib; // our graphics facilities are in Graph_lib
 
 
-	int xmax = 600;
-	int ymax = 400;
-	int x_orig = xmax/2;
-	int y_orig = ymax/2;
+	int xmax = 600; // ablak felbontása x
+	int ymax = 400; // ablak felbontása y
+	int x_orig = xmax/2; // ablak origója x
+	int y_orig = ymax/2; // ablak origója y
 
-	Point origo {x_orig, y_orig};
+	Point origo {x_orig, y_orig}; // ablak origó koordinátái point típusban
 
 	Point tl {100,100}; // to become top left corner of window
 
@@ -53,6 +53,12 @@ try
 	win.attach(cos_func);
 
 
+	Function sine {sin,0,100,Point{20,150},1000,50,50}; // sine curve
+	// plot sin() in the range [0:100) with (0,0) at (20,150)
+	// using 1000 points; scale x values *50, scale y values *50
+	win.attach(sine);
+
+
 	s.set_color(Color::blue);
 	Polygon poly;
 	poly.add(Point{300,200});
@@ -80,7 +86,7 @@ try
 	poly_rect.set_style(Line_style(Line_style::dash,2));
 	poly_rect.set_fill_color(Color::green);
 
-	Text t {Point{150,150}, "Graphics Design is my Passion!"};
+	Text t {Point{150,350}, "Graphics Design is my Passion!"};
 	win.attach(t);
 
 	t.set_font(Font::times_bold);
@@ -90,7 +96,8 @@ try
 	Image ii {Point(100,50),"image.jpg"};
 	win.attach(ii);
 
-	//ii.move(100,200);
+	win.wait_for_button();
+	ii.move(100,200);
 
 	Ellipse e {Point{100,200}, 75,25};
 	e.set_color(Color::dark_red);
@@ -105,7 +112,7 @@ try
 	ostringstream oss;
 	oss << "screen size: " << x_max() << "*" << y_max() << "; window size: " << win.x_max() << "*" << win.y_max();
 	Text sizes {Point{100,20},oss.str()};
-	Image cal {Point{225,225},"snow_cpp.gif"};
+	Image cal {Point{325,125},"snow_cpp.gif"};
 	cal.set_mask(Point{40,40},200,150);
 
 	win.attach(sizes);
